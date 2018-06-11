@@ -1,0 +1,7 @@
+setwd("../downloads/Exploratory Data Analysis/exdata%2Fdata%2Fhousehold_power_consumption")
+HPC <- read.table("household_power_consumption.txt",sep = ";",header = TRUE,na.strings = "?")
+HPCS <- subset(HPC,Date == "1/2/2007" | Date == "2/2/2007")
+HPCS$dt <- strptime(paste(HPCS$Date,HPCS$Time),"%d/%m/%Y %h:%m:%s")
+plot(HPCS$dt,HPCS$Global_active_power,type = "l",xlab = "",ylab = "Global Active Power (kilowatts)")
+dev.copy(png,"plot3.png",height=480,width=480)
+dev.off()

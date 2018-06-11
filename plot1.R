@@ -1,0 +1,7 @@
+setwd("exdata%2Fdata%2Fhousehold_power_consumption")
+household_pc <- read.table("household_power_consumption.txt",header=TRUE,na.strings="?",sep=";")
+library(dplyr)
+household_pcf <- filter(household_pc,Date=="1/2/2007" | Date == "2/2/2007")
+hist(household_pcf$Global_active_power,xlab="Global Active Power (kilowatts)",main = "Global Active Power",col = "Red")
+dev.copy(png,file="plot1.png",height=480,width=480)
+dev.off()
